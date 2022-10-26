@@ -1,7 +1,13 @@
+import { Box } from "@chakra-ui/react";
 import React from "react";
+import ToggleColorMode from "../components/toggleColorMode";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Box position="relative">
+      <ToggleColorMode />
+    </Box>
+  );
 };
 
 export default Home;
