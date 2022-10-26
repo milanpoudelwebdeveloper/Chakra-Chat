@@ -12,6 +12,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../schemas/loginSchema";
+import { axiosInstance } from "../axiosConfig";
 
 const Login = () => {
   const {
@@ -22,8 +23,13 @@ const Login = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const login = (data) => {
-    console.log(data);
+  const login = async (data) => {
+    try {
+      const res = await axiosInstance.post("login", data);
+      console.log("reponse is", res?.data);
+    } catch (e) {
+      console.log("Something went wrong", e);
+    }
   };
   return (
     <VStack
